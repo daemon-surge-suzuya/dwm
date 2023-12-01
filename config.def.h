@@ -66,6 +66,7 @@ static const char *brave[] = { "brave", NULL };
 static const Key keys[] = {
 	
 	// Custom Keybindings
+	{ MODKEY|ShiftMask,         		XK_p,      spawn,         SHCMD ("pavucontrol") },
 	{ MODKEY|ShiftMask,         		XK_u,      spawn,          { .v = flameshot } },
 	{ MODKEY,                       XK_r,      spawn,          { .v = dmenucmd } },
 	{ MODKEY,             					XK_Return, spawn,          { .v = termcmd } },
@@ -80,18 +81,18 @@ static const Key keys[] = {
 	
 	// Core functionality Keybindings
 	{ MODKEY,             					XK_space,  setlayout,      {0} },
-	{ MODKEY,             					XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY,             					XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY,             					XK_j,      focusstack,     {.i = +1 } },	
-	{ MODKEY,             					XK_k,      focusstack,     {.i = -1 } },
+	{ MODKEY,             					XK_l,      setmfact,       {.f = -0.05} },
+	{ MODKEY,             					XK_h,      setmfact,       {.f = +0.05} },
+	{ MODKEY,             					XK_k,      focusstack,     {.i = +1 } },	
+	{ MODKEY,             					XK_j,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
 	{ MODKEY,                       XK_equal,  setgaps,        {.i = +1 } },
+	{ MODKEY,             					XK_w,      killclient,     {0} },
 	{ MODKEY,             					XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
 	{ MODKEY|ShiftMask,             XK_z, 		 zoom,           {0} },
-	{ MODKEY|ShiftMask,             XK_w,      killclient,     {0} },
 	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY|ShiftMask,             XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY|ShiftMask,             XK_m,      setlayout,      {.v = &layouts[2]} },
