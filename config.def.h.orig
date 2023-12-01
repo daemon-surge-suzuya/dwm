@@ -18,6 +18,31 @@ static const char *colors[][3]      = {
 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
 };
 
+static const char *const autostart[] = {
+	"st", NULL,
+	NULL /* terminate */
+};
+
+static const char *const autostart[] = {
+	"st", NULL,
+	NULL /* terminate */
+};
+
+static const char *const autostart[] = {
+	"st", NULL,
+	NULL /* terminate */
+};
+
+static const char *const autostart[] = {
+	"st", NULL,
+	NULL /* terminate */
+};
+
+static const char *const autostart[] = {
+	"st", NULL,
+	NULL /* terminate */
+};
+
 /* tagging */
 static const char *tags[] = { "", "2", "3", "4", "5", "6", "7", "8", "9" };
 
@@ -43,7 +68,13 @@ static const Layout layouts[] = {
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
 };
+//
+// static const char *const autostart[] = {
+// 	"bash", "/home/moon/.dwm/autostart.sh", "&", NULL,
+//   NULL /* terminate */
+// };
 
+/* key definitions */
 #define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
