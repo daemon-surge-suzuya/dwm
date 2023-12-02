@@ -5,27 +5,26 @@ static const unsigned int gappx     = 10;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10", "SymbolNerdFontMono-Regular:pixelsize=15" };
-static const char dmenufont[]       = "monospace:size=10";
+static const char *fonts[]          = { "monospace:size=15", "SymbolNerdFontMono-Regular:pixelsize=18" };
+static const char dmenufont[]       = "monospace:size=12";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#bbbaf1";
+static const char col_cyan[]        = "#9b99e8";
 static const char *colors[][3]      = {
 
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+
 };
 
 /* tagging */
-// static const char *tags[] = { "󰈹", "", "", "", "", "", "", "", "" }; // Will have to think for better symbols
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
+static const char *tags[] = { "󰈹", "", "", "", "5", "6", "7", "", "󰓇" };
 
 static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 
 };
@@ -64,22 +63,26 @@ static const char *bri_increase[] = { "brightnessctl", "set", "1%+", NULL };
 static const char *bri_decrease[] = { "brightnessctl", "set", "1%-", NULL };
 static const char *shutdown[] = { "shutdown", "now", NULL };
 static const char *termcmd[] = { "alacritty", NULL }; 
+static const char *neo[] = { "alacritty", "-e", "neovim", NULL };
 
 static const Key keys[] = {
 	
 	// Custom Keybindings
+	{ ALT, 													XK_n, 		 spawn, 				 SHCMD ("obsidian" ) },
+	{ ALT, 													XK_t, 		 spawn, 				 SHCMD ("thunar") },
+	{ MODKEY,             					XK_Return, spawn,          SHCMD ("alacritty") },
+	{ MODKEY,  											XK_x,			 spawn, 				 SHCMD ("i3lock-fancy") },
+	{ MODKEY, 											XK_b, 		 spawn, 				 SHCMD ("brave") },
+	{ MODKEY, 											XK_d, 		 spawn, 				 SHCMD ("discord" ) },
+	{ MODKEY, 											XK_s, 		 spawn, 				 SHCMD ("spotify" ) },
+	{ MODKEY|ShiftMask,         		XK_p,      spawn,          SHCMD ("pavucontrol") },
+	{ MODKEY|ALT|ShiftMask, 				XK_r, 		 spawn, 				 SHCMD ("reboot" ) },
+	{ ALT,                          XK_a,      spawn,          { .v = neo } },
 	{ MODKEY|ShiftMask,         		XK_u,      spawn,          { .v = flameshot } },
 	{ MODKEY,                       XK_r,      spawn,          { .v = dmenucmd } },
 	{ MODKEY|ALT, 									XK_o, 		 spawn, 				 { .v = bri_decrease } },
 	{ MODKEY|ALT, 									XK_i, 		 spawn, 				 { .v = bri_increase } },
 	{ MODKEY|ALT|ShiftMask, 				XK_s, 		 spawn, 				 { .v = shutdown } },
-	{ MODKEY|ShiftMask,         		XK_p,      spawn,          SHCMD ("pavucontrol") },
-	{ MODKEY,             					XK_Return, spawn,          SHCMD ("alacritty") },
-	{ MODKEY,  											XK_x,			 spawn, 				 SHCMD ("i3lock-fancy") },
-	{ MODKEY, 											XK_b, 		 spawn, 				 SHCMD ("brave") },
-	{ ALT, 													XK_t, 		 spawn, 				 SHCMD ("thunar") },
-	{ MODKEY|ALT|ShiftMask, 				XK_r, 		 spawn, 				 SHCMD ("reboot" ) },
-
 	
 	// Core functionality Keybindings
 	{ MODKEY,             					XK_space,  setlayout,      {0} },
