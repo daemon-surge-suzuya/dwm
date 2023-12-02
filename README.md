@@ -21,7 +21,6 @@ necessary as root):
 If you are going to use the default bluegray color scheme it is highly
 recommended to also install the bluegray files shipped in the dextra package.
 
-
 Running dwm
 -----------
 Add the following line to your .xinitrc to start dwm using startx:
@@ -45,6 +44,31 @@ like this in your .xinitrc:
     done &
     exec dwm
 
+NixOs
+-----
+
+To use dwm on NixOS, you can add the following line to your `configuration.nix`:
+
+```nix
+
+services.xserver.windowManager.dwm.enable = true;
+
+```
+
+To provide the path to your dwm source code, add the following overlay in your `configuration.nix`:
+
+
+```nix
+
+nixpkgs.overlays = [
+  (final: prev: {
+    dwm = prev.dwm.overrideAttrs (old: { src = /path/to/your/dwm/source/code; });
+  })
+];
+
+```
+
+Every time you want to recompile your dwm source code after making a change to it, you can simply run `sudo nixos-rebuild switch`, and on the next reboot, you will have your recompiled dwm ready to use.
 
 Configuration
 -------------
