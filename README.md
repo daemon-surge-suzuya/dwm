@@ -5,8 +5,8 @@ dwm is an extremely fast, small, and dynamic window manager for X.
 
 Requirements
 ------------
-In order to build dwm you need the Xlib header files.
-Also make sure to install SymbolNerdFontMono from [NerdFonts](https://www.nerdfonts.com/font-downloads)
+- In order to build dwm you need the Xlib header files.
+- Also make sure to install SymbolNerdFontMono from [NerdFonts](https://www.nerdfonts.com/font-downloads)
 
 Installation
 ------------
