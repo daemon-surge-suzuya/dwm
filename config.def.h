@@ -5,7 +5,7 @@ static const unsigned int gappx     = 10;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=15", "SymbolNerdFontMono-Regular:pixelsize=18" };
+static const char *fonts[]          = { "monospace:size=15", "SymbolNerdFontMono-Regular:pixelsize=19" };
 static const char dmenufont[]       = "monospace:size=12";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
@@ -56,28 +56,25 @@ static const Layout layouts[] = {
 
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 
-// Keybinding Commands
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char  *flameshot[] = { "flameshot", "gui",  NULL };
 static const char *bri_increase[] = { "brightnessctl", "set", "1%+", NULL };
 static const char *bri_decrease[] = { "brightnessctl", "set", "1%-", NULL };
 static const char *shutdown[] = { "shutdown", "now", NULL };
 static const char *termcmd[] = { "alacritty", NULL }; 
-static const char *neo[] = { "alacritty", "-e", "neovim", NULL };
 
 static const Key keys[] = {
 	
 	// Custom Keybindings
 	{ ALT, 													XK_n, 		 spawn, 				 SHCMD ("obsidian" ) },
 	{ ALT, 													XK_t, 		 spawn, 				 SHCMD ("thunar") },
-	{ MODKEY,             					XK_Return, spawn,          SHCMD ("alacritty") },
+	{ MODKEY,             					XK_Return, spawn,          { .v = termcmd } },
 	{ MODKEY,  											XK_x,			 spawn, 				 SHCMD ("i3lock-fancy") },
 	{ MODKEY, 											XK_b, 		 spawn, 				 SHCMD ("brave") },
 	{ MODKEY, 											XK_d, 		 spawn, 				 SHCMD ("discord" ) },
 	{ MODKEY, 											XK_s, 		 spawn, 				 SHCMD ("spotify" ) },
 	{ MODKEY|ShiftMask,         		XK_p,      spawn,          SHCMD ("pavucontrol") },
 	{ MODKEY|ALT|ShiftMask, 				XK_r, 		 spawn, 				 SHCMD ("reboot" ) },
-	{ ALT,                          XK_a,      spawn,          { .v = neo } },
 	{ MODKEY|ShiftMask,         		XK_u,      spawn,          { .v = flameshot } },
 	{ MODKEY,                       XK_r,      spawn,          { .v = dmenucmd } },
 	{ MODKEY|ALT, 									XK_o, 		 spawn, 				 { .v = bri_decrease } },
