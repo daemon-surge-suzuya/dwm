@@ -59,7 +59,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 
 // static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *dmenucmd[] = { "bash", "/home/moon/.config/scripts/dm_cmd.sh", NULL };
-static const char *wall[] = { "bash", "/home/moon/.config/scripts/bg.sh", "/home/moon/Wallpapers",  NULL };
+static const char *wall[] = { "bash", "/home/moon/.config/scripts/bg.sh", NULL };
 static const char  *flameshot[] = { "flameshot", "gui",  NULL };
 static const char *bri_increase[] = { "brightnessctl", "set", "1%+", NULL };
 static const char *bri_decrease[] = { "brightnessctl", "set", "1%-", NULL };
