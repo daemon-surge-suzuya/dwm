@@ -25,6 +25,7 @@ static const char *tags[] = { "󰈹", "", "", "", "5", "6", "7", "",
 static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 
+	{ "sxiv", 		NULL, 			NULL, 			1 << 8, 			1, 					 -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 
 };
@@ -56,7 +57,9 @@ static const Layout layouts[] = {
 
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+// static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "bash", "/home/moon/.config/scripts/dm_cmd.sh", NULL };
+static const char *wall[] = { "bash", "/home/moon/.config/scripts/bg.sh", "/home/moon/Wallpapers",  NULL };
 static const char  *flameshot[] = { "flameshot", "gui",  NULL };
 static const char *bri_increase[] = { "brightnessctl", "set", "1%+", NULL };
 static const char *bri_decrease[] = { "brightnessctl", "set", "1%-", NULL };
@@ -68,15 +71,16 @@ static const Key keys[] = {
 	// Custom Keybindings
 	{ ALT, 													XK_n, 		 spawn, 				 SHCMD ("obsidian" ) },
 	{ ALT, 													XK_t, 		 spawn, 				 SHCMD ("thunar") },
-	{ MODKEY,             					XK_Return, spawn,          { .v = termcmd } },
 	{ MODKEY,  											XK_x,			 spawn, 				 SHCMD ("i3lock-fancy") },
 	{ MODKEY, 											XK_b, 		 spawn, 				 SHCMD ("brave") },
 	{ MODKEY, 											XK_d, 		 spawn, 				 SHCMD ("discord" ) },
 	{ MODKEY, 											XK_s, 		 spawn, 				 SHCMD ("spotify" ) },
 	{ MODKEY|ShiftMask,         		XK_p,      spawn,          SHCMD ("pavucontrol") },
 	{ MODKEY|ALT|ShiftMask, 				XK_r, 		 spawn, 				 SHCMD ("reboot" ) },
+	{ MODKEY,             					XK_Return, spawn,          { .v = termcmd } },
 	{ MODKEY|ShiftMask,         		XK_u,      spawn,          { .v = flameshot } },
 	{ MODKEY,                       XK_r,      spawn,          { .v = dmenucmd } },
+	{ ALT, 													XK_r, 		 spawn, 				 { .v = wall } },
 	{ MODKEY|ALT, 									XK_o, 		 spawn, 				 { .v = bri_decrease } },
 	{ MODKEY|ALT, 									XK_i, 		 spawn, 				 { .v = bri_increase } },
 	{ MODKEY|ALT|ShiftMask, 				XK_s, 		 spawn, 				 { .v = shutdown } },
